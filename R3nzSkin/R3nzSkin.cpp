@@ -28,7 +28,7 @@ bool WINAPI HideThread(const HANDLE hThread) noexcept
 
 		if (const auto status{ NtSetInformationThread(hThread, 0x11u, nullptr, 0ul) }; status == 0x00000000)
 			return true;
-	} __except (TRUE) {
+	} __except (1) {
 		return false;
 	}
 }
@@ -39,7 +39,7 @@ __declspec(safebuffers) static void WINAPI DllAttach([[maybe_unused]] LPVOID lp)
 
 	cheatManager.start();
 	if (HideThread(::GetCurrentThread()))
-		cheatManager.logger->addLog("Thread Hided!\n");
+		cheatManager.logger->addLog("thread hidden\n");
 
 	cheatManager.memory->Search(true);
 	while (true) {
@@ -86,6 +86,7 @@ __declspec(safebuffers) BOOL APIENTRY DllMain(const HMODULE hModule, const DWORD
 	HideThread(hModule);
 	std::setlocale(LC_ALL, ".utf8");
 
+	/* just testing */
 	::_beginthreadex(nullptr, 0u, reinterpret_cast<_beginthreadex_proc_type>(DllAttach), nullptr, 0u, nullptr);
 	::CloseHandle(hModule);
 	return TRUE;
