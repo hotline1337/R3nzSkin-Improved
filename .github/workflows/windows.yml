@@ -1,9 +1,6 @@
 name: Windows
 
-on:
-  push:
-    tags:
-      - "**"
+on: [push, pull_request]
 
 jobs:
   build:
@@ -13,13 +10,13 @@ jobs:
       matrix:
         os: [windows-2022]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.5.2
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v1.3.1
       - name: Build
         id: build
         shell: cmd
-        run: msbuild R3nzSkin.sln /p:Platform=x86 /p:Configuration=RiotGamesServers && msbuild R3nzSkin.sln /p:Platform=x86 /p:Configuration=ChinaServer
+        run: msbuild R3nzSkin.sln /p:Platform=x86 /p:Configuration=RiotGamesServers
       - name: Zip RiotGamesServers build
         uses: vimtor/action-zip@v1.1
         with:
@@ -32,6 +29,5 @@ jobs:
         with:
           artifacts: "RiotGamesServers.zip"
           name: "R3nzSkin"
-          commit: "main"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
