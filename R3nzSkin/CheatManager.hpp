@@ -21,7 +21,7 @@ public:
 		this->logger = std::make_unique<R3nzSkinLogger>();
 	}
 
-	bool cheatState{ true };
+	bool cheatState{ false };
 	std::unique_ptr<Hooks> hooks;
 	std::unique_ptr<Config> config;
 	std::unique_ptr<GUI> gui;
