@@ -18,7 +18,7 @@ void Config::init() noexcept
 		CoTaskMemFree(pathToDocuments);
 	}
 
-	this->path /= "R3nzSkin";
+	this->path /= "R3nzSkinXXX";
 }
 
 void Config::save() noexcept
