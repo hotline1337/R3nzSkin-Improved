@@ -31,5 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           artifacts: "RiotGamesServers.zip"
+          name: "R3nzSkin"
+          commit: "main"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
