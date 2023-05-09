@@ -21,7 +21,7 @@ public:
 	KeyBind nextSkinKey{ KeyBind(KeyBind::PAGE_UP) };
 	KeyBind previousSkinKey{ KeyBind(KeyBind::PAGE_DOWN) };
 	bool rainbowText{ false };
-	float fontScale{ 1.0f };
+	float fontScale{ 1.5f };
 	bool heroName{ true };
 	bool quickSkinChange{ false };
 	// player
